@@ -1,11 +1,15 @@
 export default function shipFactory(length) {
-  const shipArray = [...Array(length)].fill('not hit');
+  let shipLife = length;
 
-  const hit = function (index) {
-    this.shipArray[index] = 'hit';
+  const hit = function () {
+    this.shipLife--;
   };
   const isSunk = function () {
-    return this.shipArray.every((item) => item === 'hit');
+    if (this.shipLife < 1) {
+      return true;
+    } else if (this.shipLife > 0) {
+      return false;
+    }
   };
 
   return { shipArray, hit, isSunk };

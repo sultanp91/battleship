@@ -7,12 +7,8 @@ export default function shipFactory(length) {
     this.shipLife--;
   };
   const isSunk = function () {
-    if (this.shipLife < 1) {
-      return true;
-    } else if (this.shipLife > 0) {
-      return false;
-    }
+    return this.shipLife < 1 ? true : false;
   };
 
-  return { shipLife, hit, isSunk };
+  return { shipLength, hit, isSunk };
 }

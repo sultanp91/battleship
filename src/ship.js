@@ -1,4 +1,6 @@
 export default function shipFactory(length) {
+  const shipLength = length;
+
   let shipLife = length;
 
   const hit = function () {
@@ -12,5 +14,5 @@ export default function shipFactory(length) {
     }
   };
 
-  return { shipArray, hit, isSunk };
+  return { shipLife, hit, isSunk };
 }

@@ -2,15 +2,15 @@ import shipFactory from './ship';
 
 test('Ship object can take hits', () => {
   const newShip = shipFactory(3);
-  newShip.hit(0);
+  newShip.hit();
 
-  expect(newShip.shipArray[0]).toBe('hit');
+  expect(newShip.shipLife).toBe(2);
 });
 
 test('isSunk function will return true if all array positions are hit', () => {
   const newShip = shipFactory(2);
-  newShip.hit(0);
-  newShip.hit(1);
+  newShip.hit();
+  newShip.hit();
 
   expect(newShip.isSunk()).toBe(true);
 });

@@ -4,10 +4,10 @@ export default function shipFactory(length) {
   let shipLife = length;
 
   const hit = function () {
-    this.shipLife--;
+    shipLife--;
   };
   const isSunk = function () {
-    return this.shipLife < 1 ? true : false;
+    return shipLife < 1 ? true : false;
   };
 
   return { shipLength, hit, isSunk };

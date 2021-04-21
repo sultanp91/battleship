@@ -1,3 +1,5 @@
+import shipFactory from './ship';
+
 export default function Gameboard() {
   const boardArray = [...Array(100).fill('empty')];
 
@@ -20,5 +22,23 @@ export default function Gameboard() {
       this.boardArray[idx] = 'hit';
       ship.hit();
     }
+  };
+
+  const ship1 = shipFactory(4);
+  const ship2 = shipFactory(3);
+  const ship3 = shipFactory(2);
+  const ship4 = shipFactory(2);
+
+  const shipsSunk = function () {
+    const result1 = ship1.isSunk();
+    const result2 = ship2.isSunk();
+    const result3 = ship3.isSunk();
+    const result4 = ship4.isSunk();
+
+    let result;
+    if (ship1 && ship2 && ship3 && ship4) {
+      result = true;
+    }
+    return result;
   };
 }

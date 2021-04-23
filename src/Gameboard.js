@@ -6,15 +6,17 @@ export default function Gameboard() {
   const placeShip = (ship, idx) => {
     //checking to see if full length of ship will fit that row
     //need to add code to check if position is already occupied by another boat
+    let shipObj = JSON.stringify({ currentShip: ship, hit: false });
     const shipPlacement = idx % 10;
     if (ship.shipLength + shipPlacement < 10) {
       this.boardArray.splice(
         idx,
         ship.shipLength,
-        ...Array(ship.shipLength).fill('ship')
+        ...Array(ship.shipLength).fill(JSON.parse(shipObj))
       );
     }
   };
+
   const receiveAttack = (idx) => {
     if (this.boardArray[idx] === 'empty') {
       this.boardArray = 'miss';
@@ -35,10 +37,12 @@ export default function Gameboard() {
     const result3 = ship3.isSunk();
     const result4 = ship4.isSunk();
 
-    let result;
+    let result = false;
     if (ship1 && ship2 && ship3 && ship4) {
       result = true;
     }
     return result;
   };
+
+  return { boardArray, placeShip, receiveAttack, ship1, shipsSunk };
 }

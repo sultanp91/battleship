@@ -1,10 +1,17 @@
-import Gameboard from './Gameboard';
-import shipFactory from './ship';
+import gameboardFactory from './Gameboard';
 
-test('Ships will receieve attack', () => {
-  const Board1 = Gameboard();
+test('Board array populates correctly', () => {
+  const Board1 = gameboardFactory();
+  Board1.initBoard();
+  expect(Board1.boardArray[0]).toEqual({
+    positionTaken: false,
+    hit: false,
+  });
+});
 
-  Board1.placeShip(Board1.ship1, 2);
+test('Ships will receive attack', () => {
+  const Board1 = gameboardFactory();
 
-  expect(Board1.boardArray[2]).toEqual({ currentShip: ship1, hit: false });
+  Board1.placeShip(this.ship1, 2);
+  expect(Board1.boardArray[3]).toEqual({ currentShip: this.ship1, hit: false });
 });

@@ -1,11 +1,21 @@
 import shipFactory from './ship';
 
-export default function Gameboard() {
-  const boardArray = [...Array(100).fill('empty')];
+export default function gameboardFactory() {
+  const boardArray = [];
 
-  const placeShip = (ship, idx) => {
+  const initBoard = () => {
+    for (let i = 0; i < 100; i++) {
+      boardArray.push({
+        positionTaken: false,
+        hit: false,
+      });
+    }
+  };
+
+  const placeShip = function (ship, idx) {
     //checking to see if full length of ship will fit that row
     //need to add code to check if position is already occupied by another boat
+
     let shipObj = JSON.stringify({ currentShip: ship, hit: false });
     const shipPlacement = idx % 10;
     if (ship.shipLength + shipPlacement < 10) {
@@ -26,11 +36,6 @@ export default function Gameboard() {
     }
   };
 
-  const ship1 = shipFactory(4);
-  const ship2 = shipFactory(3);
-  const ship3 = shipFactory(2);
-  const ship4 = shipFactory(2);
-
   const shipsSunk = function () {
     const result1 = ship1.isSunk();
     const result2 = ship2.isSunk();
@@ -44,5 +49,11 @@ export default function Gameboard() {
     return result;
   };
 
-  return { boardArray, placeShip, receiveAttack, ship1, shipsSunk };
+  return {
+    boardArray,
+    initBoard,
+    placeShip,
+    receiveAttack,
+    shipsSunk,
+  };
 }

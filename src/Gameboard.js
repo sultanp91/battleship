@@ -12,48 +12,53 @@ export default function gameboardFactory() {
     }
   };
 
-  const placeShip = function (ship, idx) {
+  if (boardArray.length < 1) {
+    initBoard();
+  }
+
+  const placeShip = function (length, idx) {
     //checking to see if full length of ship will fit that row
     //need to add code to check if position is already occupied by another boat
-
-    let shipObj = JSON.stringify({ currentShip: ship, hit: false });
+    let ship = shipFactory(length);
     const shipPlacement = idx % 10;
-    if (ship.shipLength + shipPlacement < 10) {
-      this.boardArray.splice(
-        idx,
-        ship.shipLength,
-        ...Array(ship.shipLength).fill(JSON.parse(shipObj))
-      );
+    if (length + shipPlacement < 10) {
+      for (let i = idx; i < length + idx; i++) {
+        boardArray.splice(i, 1, {
+          positionTaken: true,
+          ship: true,
+          hit: false,
+        });
+      }
     }
   };
 
-  const receiveAttack = (idx) => {
-    if (this.boardArray[idx] === 'empty') {
-      this.boardArray = 'miss';
-    } else if (this.boardArray[idx] === 'ship') {
-      this.boardArray[idx] = 'hit';
-      ship.hit();
-    }
-  };
+  //   const receiveAttack = (idx) => {
+  //     if (this.boardArray[idx] === 'empty') {
+  //       this.boardArray = 'miss';
+  //     } else if (this.boardArray[idx] === 'ship') {
+  //       this.boardArray[idx] = 'hit';
+  //       ship.hit();
+  //     }
+  //   };
 
-  const shipsSunk = function () {
-    const result1 = ship1.isSunk();
-    const result2 = ship2.isSunk();
-    const result3 = ship3.isSunk();
-    const result4 = ship4.isSunk();
+  //   const shipsSunk = function () {
+  //     const result1 = ship1.isSunk();
+  //     const result2 = ship2.isSunk();
+  //     const result3 = ship3.isSunk();
+  //     const result4 = ship4.isSunk();
 
-    let result = false;
-    if (ship1 && ship2 && ship3 && ship4) {
-      result = true;
-    }
-    return result;
-  };
+  //     let result = false;
+  //     if (ship1 && ship2 && ship3 && ship4) {
+  //       result = true;
+  //     }
+  //     return result;
+  //   };
 
   return {
     boardArray,
     initBoard,
     placeShip,
-    receiveAttack,
-    shipsSunk,
+    // receiveAttack,
+    // shipsSunk,
   };
 }

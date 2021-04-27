@@ -57,6 +57,7 @@ export default function gameboardFactory() {
 
   return {
     boardArray,
+    shipArray,
     initBoard,
     placeShip,
     // receiveAttack,

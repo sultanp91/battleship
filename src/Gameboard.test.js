@@ -11,7 +11,6 @@ test('Board array populates correctly', () => {
 
 test('Ships can be placed correctly', () => {
   const Board1 = gameboardFactory();
-  const ship = shipFactory(3);
   Board1.placeShip(3, 2);
   expect(Board1.boardArray[2].currentShip.shipLength).toBe(3);
 });

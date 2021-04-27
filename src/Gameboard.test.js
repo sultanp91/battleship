@@ -4,18 +4,14 @@ import shipFactory from './ship';
 test('Board array populates correctly', () => {
   const Board1 = gameboardFactory();
   expect(Board1.boardArray[99]).toEqual({
-    positionTaken: false,
+    ship: false,
     hit: false,
   });
 });
 
 test('Ships can be placed correctly', () => {
   const Board1 = gameboardFactory();
-
+  const ship = shipFactory(3);
   Board1.placeShip(3, 2);
-  expect(Board1.boardArray[2]).toEqual({
-    positionTaken: true,
-    ship: true,
-    hit: false,
-  });
+  expect(Board1.boardArray[2].currentShip.shipLength).toBe(3);
 });

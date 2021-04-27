@@ -2,11 +2,11 @@ import shipFactory from './ship';
 
 export default function gameboardFactory() {
   const boardArray = [];
-
+  const shipArray = [];
   const initBoard = () => {
     for (let i = 0; i < 100; i++) {
       boardArray.push({
-        positionTaken: false,
+        ship: false,
         hit: false,
       });
     }
@@ -20,11 +20,12 @@ export default function gameboardFactory() {
     //checking to see if full length of ship will fit that row
     //need to add code to check if position is already occupied by another boat
     let ship = shipFactory(length);
+    shipArray.push(ship);
     const shipPlacement = idx % 10;
     if (length + shipPlacement < 10) {
       for (let i = idx; i < length + idx; i++) {
         boardArray.splice(i, 1, {
-          positionTaken: true,
+          currentShip: ship,
           ship: true,
           hit: false,
         });

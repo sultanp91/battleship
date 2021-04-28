@@ -33,14 +33,14 @@ export default function gameboardFactory() {
     }
   };
 
-  //   const receiveAttack = (idx) => {
-  //     if (this.boardArray[idx] === 'empty') {
-  //       this.boardArray = 'miss';
-  //     } else if (this.boardArray[idx] === 'ship') {
-  //       this.boardArray[idx] = 'hit';
-  //       ship.hit();
-  //     }
-  //   };
+  const receiveAttack = (idx) => {
+    if (boardArray[idx].ship === true) {
+      boardArray[idx].currentShip.hit();
+      boardArray[idx].hit = true;
+    } else if (boardArray[idx].ship === false) {
+      boardArray[idx].hit = true;
+    }
+  };
 
   const shipsSunk = function () {
     return shipArray.every((item) => item.isSunk() === true);

@@ -42,18 +42,9 @@ export default function gameboardFactory() {
   //     }
   //   };
 
-  //   const shipsSunk = function () {
-  //     const result1 = ship1.isSunk();
-  //     const result2 = ship2.isSunk();
-  //     const result3 = ship3.isSunk();
-  //     const result4 = ship4.isSunk();
-
-  //     let result = false;
-  //     if (ship1 && ship2 && ship3 && ship4) {
-  //       result = true;
-  //     }
-  //     return result;
-  //   };
+  const shipsSunk = function () {
+    return shipArray.every((item) => item.isSunk() === true);
+  };
 
   return {
     boardArray,
@@ -61,6 +52,6 @@ export default function gameboardFactory() {
     initBoard,
     placeShip,
     // receiveAttack,
-    // shipsSunk,
+    shipsSunk,
   };
 }

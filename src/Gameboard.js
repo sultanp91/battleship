@@ -34,10 +34,13 @@ export default function gameboardFactory() {
   };
 
   const receiveAttack = (idx) => {
-    if (boardArray[idx].ship === true) {
+    if (boardArray[idx].ship === true && boardArray[idx].hit === false) {
       boardArray[idx].currentShip.hit();
       boardArray[idx].hit = true;
-    } else if (boardArray[idx].ship === false) {
+    } else if (
+      boardArray[idx].ship === false &&
+      boardArray[idx].hit === false
+    ) {
       boardArray[idx].hit = true;
     }
   };
@@ -51,7 +54,7 @@ export default function gameboardFactory() {
     shipArray,
     initBoard,
     placeShip,
-    // receiveAttack,
+    receiveAttack,
     shipsSunk,
   };
 }

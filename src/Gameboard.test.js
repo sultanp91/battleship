@@ -73,3 +73,27 @@ test('shipsSunk function is working correctly (multiple ships)', () => {
   Board1.boardArray[4].currentShip.hit();
   expect(Board1.shipsSunk()).toBe(false);
 });
+
+test('Receive attack function is working correctly - both hits land', () => {
+  const Board1 = gameboardFactory();
+  Board1.placeShip(2, 2);
+  Board1.receiveAttack(2);
+  Board1.receiveAttack(3);
+  expect(Board1.shipArray[0].isSunk()).toBe(true);
+});
+
+test('Receive attack function is working correctly - only one hit lands', () => {
+  const Board1 = gameboardFactory();
+  Board1.placeShip(2, 2);
+  Board1.receiveAttack(2);
+  Board1.receiveAttack(4);
+  expect(Board1.shipArray[0].isSunk()).toBe(false);
+});
+
+test('Receive attack function is working correctly - multiple hits on one location', () => {
+  const Board1 = gameboardFactory();
+  Board1.placeShip(2, 2);
+  Board1.receiveAttack(2);
+  Board1.receiveAttack(2);
+  expect(Board1.shipArray[0].isSunk()).toBe(false);
+});

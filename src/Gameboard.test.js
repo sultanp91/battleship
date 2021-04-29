@@ -21,6 +21,13 @@ test('Ships can be placed correctly (incorrect parameters - wont fit board)', ()
   expect(Board1.boardArray[8].ship).toBe(false);
 });
 
+test("Ships can't be placed if one of the positions have already been occupied", () => {
+  const Board1 = gameboardFactory();
+  Board1.placeShip(0, 5);
+  Board1.placeShip(4, 3);
+  expect(Board1.boardArray[7].ship).toBe(false);
+});
+
 test('Ships are being sent to ship Array', () => {
   const Board1 = gameboardFactory();
   Board1.placeShip(3, 2);

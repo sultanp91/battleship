@@ -16,24 +16,26 @@ export default function gameboardFactory() {
     initBoard();
   }
 
-  const placeShip = function (length, idx) {
+  const placeShip = function (length, idx, horizontal) {
     //checking to see if full length of ship will fit that row
     //need to add code to check if position is already occupied by another boat
-    let ship = shipFactory(length);
-    shipArray.push(ship);
-    const shipPlacement = idx % 10;
-    if (length + shipPlacement < 10) {
-      let positionArray = [];
-      for (let i = idx; i < length + idx; i++) {
-        positionArray.push(boardArray[i]);
-      }
-      if (positionArray.every((item) => item.ship === false)) {
+    if (horizontal) {
+      const shipPlacement = idx % 10;
+      if (length + shipPlacement < 10) {
+        let positionArray = [];
         for (let i = idx; i < length + idx; i++) {
-          boardArray.splice(i, 1, {
-            currentShip: ship,
-            ship: true,
-            hit: false,
-          });
+          positionArray.push(boardArray[i]);
+        }
+        if (positionArray.every((item) => item.ship === false)) {
+          let ship = shipFactory(length);
+          shipArray.push(ship);
+          for (let i = idx; i < length + idx; i++) {
+            boardArray.splice(i, 1, {
+              currentShip: ship,
+              ship: true,
+              hit: false,
+            });
+          }
         }
       }
     }

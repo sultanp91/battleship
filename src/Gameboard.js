@@ -40,15 +40,15 @@ export default function gameboardFactory() {
       }
     }
     if (!horizontal) {
-      if (idx + length * 10 < 100) {
+      if (idx + (length - 1) * 10 < 100) {
         let positionArray = [];
-        for (let i = idx; i < idx + (length - 1) * 10; i += 10) {
+        for (let i = idx; i <= idx + (length - 1) * 10; i += 10) {
           positionArray.push(boardArray[i]);
         }
         if (positionArray.every((item) => item.ship === false)) {
           let ship = shipFactory(length);
           shipArray.push(ship);
-          for (let i = idx; i < idx + (length - 1) * 10; i += 10) {
+          for (let i = idx; i <= idx + (length - 1) * 10; i += 10) {
             boardArray.splice(i, 1, {
               currentShip: ship,
               ship: true,

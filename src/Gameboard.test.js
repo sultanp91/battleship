@@ -9,13 +9,25 @@ test('Board array populates correctly', () => {
   });
 });
 
-test('Ships can be placed correctly (correct parameters)', () => {
+test('Ships can be placed correctly (horizontally - correct parameters)', () => {
   const Board1 = gameboardFactory();
   Board1.placeShip(3, 2, true);
   expect(Board1.boardArray[2].currentShip.shipLength).toBe(3);
 });
 
-test('Ships can be placed correctly (incorrect parameters - wont fit board)', () => {
+test('Ships can be placed correctly (vertically - correct parameters)', () => {
+  const Board1 = gameboardFactory();
+  Board1.placeShip(3, 0, false);
+  expect(Board1.boardArray[20].currentShip.shipLength).toBe(3);
+});
+
+test('Ships can be placed correctly (vertically - correct parameters)', () => {
+  const Board1 = gameboardFactory();
+  Board1.placeShip(3, 0, false);
+  expect(Board1.boardArray[30].ship).toBe(false);
+});
+
+test('Ships can be placed correctly (horizontally - incorrect parameters - wont fit board)', () => {
   const Board1 = gameboardFactory();
   Board1.placeShip(5, 8, true);
   expect(Board1.boardArray[8].ship).toBe(false);

@@ -122,3 +122,9 @@ test('Receive attack function is working correctly - multiple hits on one locati
   Board1.receiveAttack(2);
   expect(Board1.shipArray[0].isSunk()).toBe(false);
 });
+
+test('Hits on on location does not register on another location', () => {
+  const Board1 = gameboardFactory();
+  Board1.receiveAttack(2);
+  expect(Board1.boardArray[4].hit).toBe(false);
+});

@@ -16,7 +16,7 @@ export default function gameboardFactory() {
     initBoard();
   }
 
-  const prevAttack = {
+  let prevAttack = {
     hit: null,
     idx: null,
   };
@@ -69,13 +69,15 @@ export default function gameboardFactory() {
     if (boardArray[idx].ship === true && boardArray[idx].hit === false) {
       boardArray[idx].currentShip.hit();
       boardArray[idx].hit = true;
-      prevAttack = { hit: true, idx: idx };
+      prevAttack.hit = true;
+      prevAttack.idx = idx;
     } else if (
       boardArray[idx].ship === false &&
       boardArray[idx].hit === false
     ) {
       boardArray[idx].hit = true;
-      prevAttack = { hit: false, idx: null };
+      prevAttack.hit = false;
+      prevAttack.idx = null;
     }
   };
 
@@ -90,5 +92,6 @@ export default function gameboardFactory() {
     placeShip,
     receiveAttack,
     shipsSunk,
+    prevAttack,
   };
 }

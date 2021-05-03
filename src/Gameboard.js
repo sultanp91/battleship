@@ -16,6 +16,11 @@ export default function gameboardFactory() {
     initBoard();
   }
 
+  const prevAttack = {
+    hit: null,
+    idx: null,
+  };
+
   const placeShip = function (length, idx, horizontal) {
     if (horizontal) {
       //checking to see if full length of ship will fit on board
@@ -64,11 +69,13 @@ export default function gameboardFactory() {
     if (boardArray[idx].ship === true && boardArray[idx].hit === false) {
       boardArray[idx].currentShip.hit();
       boardArray[idx].hit = true;
+      prevAttack = { hit: true, idx: idx };
     } else if (
       boardArray[idx].ship === false &&
       boardArray[idx].hit === false
     ) {
       boardArray[idx].hit = true;
+      prevAttack = { hit: false, idx: null };
     }
   };
 

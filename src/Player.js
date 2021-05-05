@@ -7,12 +7,12 @@ export default function playerFactory(name, turn) {
 
   let turn = turn;
 
-  const randomMove = () => {
+  const randomMove = (opponentBoard) => {
     let randomIdx = Math.floor(Math.random() * 100);
 
-    if (board.boardArray[randomIdx].hit === false) {
+    if (opponentBoard[randomIdx].hit === false) {
       return randomIdx;
-    } else if (board.boardArray[randomIdx].hit === true) {
+    } else if (opponentBoard[randomIdx].hit === true) {
       randomIdx = randomMove();
     }
     return randomIdx;

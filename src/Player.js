@@ -1,13 +1,14 @@
 import gameboardFactory from './Gameboard';
 
-export default function playerFactory(name, turn) {
+export default function playerFactory(name, turn, AI) {
   const playerName = name;
+  let playerTurn = turn;
+  let computer = AI;
 
   let board = gameboardFactory();
 
-  let playerTurn = turn;
-
   const randomMove = (opponentBoard) => {
+    // function to find board positions which haven't been hit. Function will
     function randomIndex() {
       let randomIdx = Math.floor(Math.random() * 100);
 

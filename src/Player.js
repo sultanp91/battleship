@@ -1,20 +1,27 @@
 import gameboardFactory from './Gameboard';
 
 export default function playerFactory(name, turn) {
-  const name = name;
+  const playerName = name;
 
   let board = gameboardFactory();
 
-  let turn = turn;
+  let playerTurn = turn;
 
   const randomMove = (opponentBoard) => {
-    let randomIdx = Math.floor(Math.random() * 100);
+    function randomIndex() {
+      let randomIdx = Math.floor(Math.random() * 100);
 
-    if (opponentBoard[randomIdx].hit === false) {
+      if (opponentBoard.boardArray[randomIdx].hit === false) {
+        return randomIdx;
+      } else if (opponentBoard.boardArray[randomIdx].hit === true) {
+        randomIdx = randomMove();
+      }
       return randomIdx;
-    } else if (opponentBoard[randomIdx].hit === true) {
-      randomIdx = randomMove();
     }
-    return randomIdx;
+
+    let idx = randomIndex();
+    opponentBoard.receiveAttack(idx);
   };
+
+  return { playerName, playerTurn, board, randomMove };
 }

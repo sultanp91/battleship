@@ -2,7 +2,9 @@ import gameboardFactory from './Gameboard';
 
 export default function playerFactory(name, turn, AI) {
   const playerName = name;
+  //playerTurn will take in a boolean
   let playerTurn = turn;
+  //computer will will take in a boolean to determine if it is an AI player or not
   let computer = AI;
 
   let board = gameboardFactory();

@@ -11,17 +11,31 @@ function App() {
   const placeShip = () => {
     let playerCopy = Object.assign({}, player1);
     playerCopy.board.placeShip(3, 3, true);
-
     setPlayer1(playerCopy);
   };
+
+  const hitShip = (e) => {
+    let playerCopy = Object.assign({}, player1);
+    let index = e.target.dataset.index;
+    playerCopy.board.receiveAttack(index);
+    setPlayer1(playerCopy);
+  };
+
+  const hitColor = { color: 'red' };
+  const notHitColor = { color: 'blue' };
 
   return (
     <div className='App'>
       <button onClick={() => placeShip()}>Place ship</button>
       <h1>Battleship</h1>
       <div className='gameboard'>
-        {player1.board.boardArray.map((boardCell) => (
-          <div className={boardCell.ship ? 'ship' : 'water'}>
+        {player1.board.boardArray.map((boardCell, index) => (
+          <div
+            onClick={(e) => hitShip(e)}
+            style={boardCell.hit ? hitColor : notHitColor}
+            data-index={index}
+            // className={boardCell.ship ? 'ship' : 'water'}
+          >
             {boardCell.ship ? 'ship' : 'water'}
           </div>
         ))}

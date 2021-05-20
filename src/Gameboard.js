@@ -82,7 +82,9 @@ export default function gameboardFactory() {
   };
 
   const shipsSunk = function () {
-    return shipArray.every((item) => item.isSunk() === true);
+    if (shipArray.length > 0) {
+      return shipArray.every((item) => item.isSunk() === true);
+    }
   };
 
   return {

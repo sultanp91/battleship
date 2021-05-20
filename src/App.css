@@ -1,4 +1,5 @@
 .gameboard {
+  width: 600px;
   display: grid;
   grid-template-columns: repeat(10, 1fr);
 }

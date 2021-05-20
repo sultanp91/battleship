@@ -20,18 +20,14 @@ function App() {
     setPlayer2(playerCopy2);
   };
 
-  const hitShip = (e) => {
-    let playerCopy = Object.assign({}, player1);
+  const playRound = (e) => {
+    let playerCopy2 = Object.assign({}, player2);
     let index = e.target.dataset.index;
-    playerCopy.board.receiveAttack(index);
-    setPlayer1(playerCopy);
-  };
-
-  const hitShip2 = (e) => {
-    let playerCopy = Object.assign({}, player2);
-    let index = e.target.dataset.index;
-    playerCopy.board.receiveAttack(index);
-    setPlayer2(playerCopy);
+    playerCopy2.board.receiveAttack(index);
+    let playerCopy1 = Object.assign({}, player1);
+    playerCopy2.randomMove(playerCopy1.board);
+    setPlayer2(playerCopy2);
+    setPlayer1(playerCopy1);
   };
 
   const hitColor = { color: 'red' };
@@ -57,7 +53,6 @@ function App() {
       <div className='gameboard'>
         {player1.board.boardArray.map((boardCell, index) => (
           <div
-            onClick={(e) => hitShip(e)}
             style={boardCell.hit ? hitColor : notHitColor}
             data-index={index}
             // className={boardCell.ship ? 'ship' : 'water'}
@@ -70,7 +65,7 @@ function App() {
       <div className='gameboard'>
         {player2.board.boardArray.map((boardCell, index) => (
           <div
-            onClick={(e) => hitShip2(e)}
+            onClick={(e) => playRound(e)}
             style={boardCell.hit ? hitColor : notHitColor}
             data-index={index}
             // className={boardCell.ship ? 'ship' : 'water'}

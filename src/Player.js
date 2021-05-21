@@ -1,30 +1,25 @@
 import gameboardFactory from './Gameboard';
 
-export default function playerFactory(name, turn, AI) {
+export default function playerFactory(name) {
   const playerName = name;
-  //playerTurn will take in a boolean
-  let playerTurn = turn;
-  //computer will will take in a boolean to determine if it is an AI player or not
-  let computer = AI;
 
   let board = gameboardFactory();
 
-  const randomMove = (opponentBoard) => {
-    // function to find board positions which haven't been hit. Function will
+  const randomMove = () => {
     function randomIndex() {
       let randomIdx = Math.floor(Math.random() * 100);
-
-      if (opponentBoard.boardArray[randomIdx].hit === false) {
+      console.log(randomIdx);
+      if (board.boardArray[randomIdx].hit === false) {
         return randomIdx;
-      } else if (opponentBoard.boardArray[randomIdx].hit === true) {
-        randomIdx = randomMove();
+      } else if (board.boardArray[randomIdx].hit === true) {
+        return randomIndex();
       }
-      return randomIdx;
     }
 
     let idx = randomIndex();
-    opponentBoard.receiveAttack(idx);
+    console.log(idx);
+    board.receiveAttack(idx);
   };
 
-  return { playerName, playerTurn, board, randomMove };
+  return { playerName, board, randomMove };
 }

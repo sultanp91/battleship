@@ -21,13 +21,15 @@ function App() {
   };
 
   const playRound = (e) => {
-    let playerCopy2 = Object.assign({}, player2);
-    let index = e.target.dataset.index;
-    playerCopy2.board.receiveAttack(index);
-    let playerCopy1 = Object.assign({}, player1);
-    playerCopy2.randomMove(playerCopy1.board);
-    setPlayer2(playerCopy2);
-    setPlayer1(playerCopy1);
+    if (e.target.dataset.hit === 'false') {
+      let playerCopy2 = Object.assign({}, player2);
+      let index = e.target.dataset.index;
+      playerCopy2.board.receiveAttack(index);
+      let playerCopy1 = Object.assign({}, player1);
+      playerCopy1.randomMove();
+      setPlayer2(playerCopy2);
+      setPlayer1(playerCopy1);
+    }
   };
 
   const hitColor = { color: 'red' };
@@ -68,6 +70,7 @@ function App() {
             onClick={(e) => playRound(e)}
             style={boardCell.hit ? hitColor : notHitColor}
             data-index={index}
+            data-hit={boardCell.hit}
             // className={boardCell.ship ? 'ship' : 'water'}
           >
             {boardCell.ship ? 'ship' : 'water'}

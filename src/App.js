@@ -15,8 +15,7 @@ function App() {
     playerCopy1.board.placeShip(3, 20, false);
     setPlayer1(playerCopy1);
     let playerCopy2 = Object.assign({}, player2);
-    playerCopy2.board.placeShip(3, 3, true);
-    playerCopy2.board.placeShip(3, 20, false);
+    playerCopy2.randomPlacement();
     setPlayer2(playerCopy2);
   };
 

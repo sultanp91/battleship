@@ -22,6 +22,7 @@ export default function gameboardFactory() {
   };
 
   const placeShip = function (length, idx, horizontal) {
+    let shipPlaced = false;
     if (horizontal) {
       //checking to see if full length of ship will fit on board
       const shipPlacement = idx % 10;
@@ -32,6 +33,7 @@ export default function gameboardFactory() {
           positionArray.push(boardArray[i]);
         }
         if (positionArray.every((item) => item.ship === false)) {
+          shipPlaced = true;
           let ship = shipFactory(length);
           shipArray.push(ship);
           for (let i = idx; i < length + idx; i++) {
@@ -51,6 +53,7 @@ export default function gameboardFactory() {
           positionArray.push(boardArray[i]);
         }
         if (positionArray.every((item) => item.ship === false)) {
+          shipPlaced = true;
           let ship = shipFactory(length);
           shipArray.push(ship);
           for (let i = idx; i <= idx + (length - 1) * 10; i += 10) {
@@ -63,6 +66,7 @@ export default function gameboardFactory() {
         }
       }
     }
+    return shipPlaced;
   };
 
   const receiveAttack = (idx) => {

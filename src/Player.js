@@ -8,7 +8,6 @@ export default function playerFactory(name) {
   const randomMove = () => {
     function randomIndex() {
       let randomIdx = Math.floor(Math.random() * 100);
-      console.log(randomIdx);
       if (board.boardArray[randomIdx].hit === false) {
         return randomIdx;
       } else if (board.boardArray[randomIdx].hit === true) {
@@ -17,7 +16,6 @@ export default function playerFactory(name) {
     }
 
     let idx = randomIndex();
-    console.log(idx);
     board.receiveAttack(idx);
   };
 

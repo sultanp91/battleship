@@ -63,7 +63,11 @@ function App() {
   }, [player1, player2]);
   return (
     <div className='App'>
-      {!shipsPlaced && <button type='button'>Place Ship</button>}
+      {!shipsPlaced && (
+        <button type='button' onClick={() => setHorizontal(!horizontal)}>
+          Toggle Horizontal
+        </button>
+      )}
       <button onClick={() => placeShipAI()}>Place AI ship</button>
       <h1>Battleship</h1>
       <h2>Winner: {winner}</h2>

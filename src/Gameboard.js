@@ -26,7 +26,7 @@ export default function gameboardFactory() {
     if (horizontal) {
       //checking to see if full length of ship will fit on board
       const shipPlacement = idx % 10;
-      if (length + shipPlacement < 10) {
+      if (length + shipPlacement <= 10) {
         //checking to see if all positions on board are free for the ship
         let positionArray = [];
         for (let i = idx; i < length + idx; i++) {

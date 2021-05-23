@@ -20,9 +20,9 @@ export default function playerFactory(name) {
   };
 
   function randIdxOrientation(shipLength) {
-    let randomIdx = Math.floor(Math.random() * 100);
-    let orientations = [true, false];
-    let randomOrientation = Math.floor(Math.random() * 2);
+    const randomIdx = Math.floor(Math.random() * 100);
+    const orientations = [true, false];
+    const randomOrientation = Math.floor(Math.random() * 2);
     if (
       !board.placeShip(shipLength, randomIdx, orientations[randomOrientation])
     ) {
@@ -30,13 +30,13 @@ export default function playerFactory(name) {
     }
   }
 
+  const shipLengths = [5, 4, 3, 3, 2];
+
   const randomPlacement = () => {
-    let shipLengths = [5, 4, 3, 3, 2];
     shipLengths.forEach((shipLength) => {
-      console.log(shipLength);
       randIdxOrientation(shipLength);
     });
   };
 
-  return { playerName, board, randomMove, randomPlacement };
+  return { playerName, board, randomMove, shipLengths, randomPlacement };
 }

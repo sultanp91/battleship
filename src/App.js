@@ -9,14 +9,32 @@ function App() {
 
   const [winner, setWinner] = useState(null);
 
-  const placeShip = () => {
-    let playerCopy1 = Object.assign({}, player1);
-    playerCopy1.board.placeShip(3, 3, true);
-    playerCopy1.board.placeShip(3, 20, false);
-    setPlayer1(playerCopy1);
+  const [index, setIndex] = useState(0);
+
+  const [horizontal, setHorizontal] = useState(true);
+
+  const [shipsPlaced, setShipsPlaced] = useState(false);
+
+  const placeShipAI = () => {
     let playerCopy2 = Object.assign({}, player2);
     playerCopy2.randomPlacement();
     setPlayer2(playerCopy2);
+  };
+
+  const playerPlacement = (e) => {
+    if (!shipsPlaced) {
+      let playerCopy1 = Object.assign({}, player1);
+      if (
+        playerCopy1.board.placeShip(
+          playerCopy1.shipLengths[index],
+          parseInt(e.target.dataset.index),
+          horizontal
+        )
+      ) {
+        setPlayer1(playerCopy1);
+        setIndex(index + 1);
+      }
+    }
   };
 
   const playRound = (e) => {
@@ -45,7 +63,8 @@ function App() {
   }, [player1, player2]);
   return (
     <div className='App'>
-      <button onClick={() => placeShip()}>Place ship</button>
+      {!shipsPlaced && <button type='button'>Place Ship</button>}
+      <button onClick={() => placeShipAI()}>Place AI ship</button>
       <h1>Battleship</h1>
       <h2>Winner: {winner}</h2>
       <h2>
@@ -54,6 +73,7 @@ function App() {
       <div className='gameboard'>
         {player1.board.boardArray.map((boardCell, index) => (
           <div
+            onClick={(e) => playerPlacement(e)}
             style={boardCell.hit ? hitColor : notHitColor}
             data-index={index}
             // className={boardCell.ship ? 'ship' : 'water'}

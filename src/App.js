@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import playerFactory from './Factories/Player';
+import ComputerBoard from './ComputerBoard';
 
 function App() {
   const [player1, setPlayer1] = useState(playerFactory('Player 1'));
@@ -87,19 +88,7 @@ function App() {
         ))}
       </div>
       <h1>board 2</h1>
-      <div className='gameboard'>
-        {player2.board.boardArray.map((boardCell, index) => (
-          <div
-            onClick={(e) => playRound(e)}
-            style={boardCell.hit ? hitColor : notHitColor}
-            data-index={index}
-            data-hit={boardCell.hit}
-            // className={boardCell.ship ? 'ship' : 'water'}
-          >
-            {boardCell.ship ? 'ship' : 'water'}
-          </div>
-        ))}
-      </div>
+      <ComputerBoard player2={player2} playRound={playRound} />
     </div>
   );
 }

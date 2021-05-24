@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import playerFactory from './Player';
+import playerFactory from './Factories/Player';
 
 function App() {
   const [player1, setPlayer1] = useState(playerFactory('Player 1'));

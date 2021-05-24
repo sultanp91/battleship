@@ -1,8 +1,15 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
-function ComputerBoard({ player2, playRound }) {
+function ComputerBoard({ player2, setPlayer2, playRound }) {
   const hitColor = { color: 'red' };
   const notHitColor = { color: 'blue' };
+
+  useEffect(() => {
+    let playerCopy2 = Object.assign({}, player2);
+    playerCopy2.randomPlacement();
+    setPlayer2(playerCopy2);
+  }, []);
+
   return (
     <div>
       <div className='gameboard'>
@@ -18,7 +25,6 @@ function ComputerBoard({ player2, playRound }) {
           </div>
         ))}
       </div>
-      <h1>Duplicate Board</h1>
     </div>
   );
 }

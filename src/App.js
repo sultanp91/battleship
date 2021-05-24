@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import playerFactory from './Factories/Player';
 import ComputerBoard from './ComputerBoard';
+import PlayerBoard from './PlayerBoard';
 
 function App() {
   const [player1, setPlayer1] = useState(playerFactory('Player 1'));
@@ -15,12 +16,6 @@ function App() {
   const [horizontal, setHorizontal] = useState(true);
 
   const [shipsPlaced, setShipsPlaced] = useState(false);
-
-  const placeShipAI = () => {
-    let playerCopy2 = Object.assign({}, player2);
-    playerCopy2.randomPlacement();
-    setPlayer2(playerCopy2);
-  };
 
   const playerPlacement = (e) => {
     if (!shipsPlaced) {
@@ -69,7 +64,6 @@ function App() {
           Toggle Horizontal
         </button>
       )}
-      <button onClick={() => placeShipAI()}>Place AI ship</button>
       <h1>Battleship</h1>
       <h2>Winner: {winner}</h2>
       <h2>
@@ -88,7 +82,12 @@ function App() {
         ))}
       </div>
       <h1>board 2</h1>
-      <ComputerBoard player2={player2} playRound={playRound} />
+
+      <ComputerBoard
+        player2={player2}
+        setPlayer2={setPlayer2}
+        playRound={playRound}
+      />
     </div>
   );
 }

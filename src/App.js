@@ -45,9 +45,6 @@ function App() {
     }
   };
 
-  const hitColor = { color: 'red' };
-  const notHitColor = { color: 'blue' };
-
   useEffect(() => {
     if (player1.board.shipsSunk()) {
       setWinner(player2.playerName);
@@ -69,25 +66,20 @@ function App() {
       <h2>
         Player 1 {player1.board.shipsSunk() ? 'ships sunk' : 'still floating'}
       </h2>
-      <div className='gameboard'>
-        {player1.board.boardArray.map((boardCell, index) => (
-          <div
-            onClick={(e) => playerPlacement(e)}
-            style={boardCell.hit ? hitColor : notHitColor}
-            data-index={index}
-            // className={boardCell.ship ? 'ship' : 'water'}
-          >
-            {boardCell.ship ? 'ship' : 'water'}
-          </div>
-        ))}
+      <div className='gameboard-container'>
+        <PlayerBoard
+          player1={player1}
+          setPlayer1={setPlayer1}
+          playerPlacement={playerPlacement}
+          horizontal={horizontal}
+        />
+        <ComputerBoard
+          className='gameboard-container'
+          player2={player2}
+          setPlayer2={setPlayer2}
+          playRound={playRound}
+        />
       </div>
-      <h1>board 2</h1>
-
-      <ComputerBoard
-        player2={player2}
-        setPlayer2={setPlayer2}
-        playRound={playRound}
-      />
     </div>
   );
 }

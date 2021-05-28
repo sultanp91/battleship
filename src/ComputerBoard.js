@@ -11,7 +11,7 @@ function ComputerBoard({ player2, setPlayer2, playRound }) {
   }, []);
 
   return (
-    <div>
+    <div className='board-wrapper'>
       <div className='gameboard'>
         {player2.board.boardArray.map((boardCell, index) => (
           <div
@@ -19,7 +19,7 @@ function ComputerBoard({ player2, setPlayer2, playRound }) {
             style={boardCell.hit ? hitColor : notHitColor}
             data-index={index}
             data-hit={boardCell.hit}
-            // className={boardCell.ship ? 'ship' : 'water'}
+            className={`cell ${boardCell.ship ? 'ship' : 'water'}`}
           >
             {boardCell.ship ? 'ship' : 'water'}
           </div>

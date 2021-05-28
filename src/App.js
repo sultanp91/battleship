@@ -9,16 +9,18 @@ function App() {
 
   const [player2, setPlayer2] = useState(playerFactory('Player 2'));
 
-  const [winner, setWinner] = useState(null);
+  const [horizontal, setHorizontal] = useState(true);
 
   const [index, setIndex] = useState(0);
 
-  const [horizontal, setHorizontal] = useState(true);
+  const [winner, setWinner] = useState(null);
+
+  const [gameOver, setGameOver] = useState(true);
 
   const [shipsPlaced, setShipsPlaced] = useState(false);
 
   const playerPlacement = (e) => {
-    if (!shipsPlaced) {
+    if (!shipsPlaced && gameOver) {
       let playerCopy1 = Object.assign({}, player1);
       if (
         playerCopy1.board.placeShip(
@@ -34,7 +36,7 @@ function App() {
   };
 
   const playRound = (e) => {
-    if (e.target.dataset.hit === 'false') {
+    if (!gameOver && e.target.dataset.hit === 'false') {
       let playerCopy2 = Object.assign({}, player2);
       let index = e.target.dataset.index;
       playerCopy2.board.receiveAttack(index);
@@ -48,12 +50,22 @@ function App() {
   useEffect(() => {
     if (player1.board.shipsSunk()) {
       setWinner(player2.playerName);
+      setGameOver(true);
     } else if (player2.board.shipsSunk()) {
       setWinner(player1.playerName);
+      setGameOver(true);
     } else if (!player2.board.shipsSunk() && !player1.board.shipsSunk()) {
       setWinner('No Winner yet!');
     }
   }, [player1, player2]);
+
+  useEffect(() => {
+    if (index > 4) {
+      setShipsPlaced(true);
+      setGameOver(false);
+    }
+  }, [index]);
+  useEffect;
   return (
     <div className='App'>
       {!shipsPlaced && (
@@ -71,6 +83,7 @@ function App() {
           player1={player1}
           setPlayer1={setPlayer1}
           playerPlacement={playerPlacement}
+          shipsPlaced={shipsPlaced}
           horizontal={horizontal}
         />
         <ComputerBoard

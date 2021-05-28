@@ -8,5 +8,16 @@
 
 .gameboard-container {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+}
+
+.board-wrapper {
+  border-top: solid 1px black;
+  border-left: solid 1px black;
+  margin: 3rem;
+}
+
+.cell {
+  border-bottom: solid 1px black;
+  border-right: solid 1px black;
 }

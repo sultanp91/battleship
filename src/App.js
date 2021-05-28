@@ -3,6 +3,7 @@ import './App.css';
 import playerFactory from './Factories/Player';
 import ComputerBoard from './ComputerBoard';
 import PlayerBoard from './PlayerBoard';
+import GameInfo from './GameInfo';
 
 function App() {
   const [player1, setPlayer1] = useState(playerFactory('Player 1'));
@@ -78,6 +79,7 @@ function App() {
       <h2>
         Player 1 {player1.board.shipsSunk() ? 'ships sunk' : 'still floating'}
       </h2>
+      <GameInfo gameOver={gameOver} shipsPlaced={shipsPlaced} />
       <div className='gameboard-container'>
         <PlayerBoard
           player1={player1}

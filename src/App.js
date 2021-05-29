@@ -8,7 +8,7 @@ import GameInfo from './GameInfo';
 function App() {
   const [player1, setPlayer1] = useState(playerFactory('Player 1'));
 
-  const [player2, setPlayer2] = useState(playerFactory('Player 2'));
+  const [player2, setPlayer2] = useState(playerFactory('Computer'));
 
   const [horizontal, setHorizontal] = useState(true);
 
@@ -34,6 +34,16 @@ function App() {
         setIndex(index + 1);
       }
     }
+  };
+
+  const resetGame = () => {
+    setPlayer1(playerFactory('Player 1'));
+    let playerCopy2 = playerFactory('Computer');
+    playerCopy2.randomPlacement();
+    setPlayer2(playerCopy2);
+    setShipsPlaced(false);
+    setIndex(0);
+    setWinner(null);
   };
 
   const playRound = (e) => {
@@ -74,6 +84,7 @@ function App() {
           Toggle Horizontal
         </button>
       )}
+      <button onClick={resetGame}>Reset Game</button>
       <h1>Battleship</h1>
       <h2>Winner: {winner}</h2>
       <h2>

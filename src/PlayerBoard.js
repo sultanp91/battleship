@@ -7,8 +7,8 @@ function PlayerBoard({
   playerPlacement,
   horizontal,
 }) {
-  const hitColor = { color: 'red' };
-  const notHitColor = { color: 'blue' };
+  const hitColor = { backgroundColor: 'red' };
+  const notHitColor = { backgroundColor: 'blue' };
   return (
     <div className='board-wrapper'>
       <div className='gameboard'>

@@ -42,6 +42,7 @@ function App() {
     playerCopy2.randomPlacement();
     setPlayer2(playerCopy2);
     setShipsPlaced(false);
+    setGameOver(true);
     setIndex(0);
     setWinner(null);
   };

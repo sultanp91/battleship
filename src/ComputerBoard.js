@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
 function ComputerBoard({ player2, setPlayer2, playRound }) {
-  const hitColor = { color: 'red' };
-  const notHitColor = { color: 'blue' };
-
   useEffect(() => {
     let playerCopy2 = Object.assign({}, player2);
     playerCopy2.randomPlacement();
@@ -16,10 +13,16 @@ function ComputerBoard({ player2, setPlayer2, playRound }) {
         {player2.board.boardArray.map((boardCell, index) => (
           <div
             onClick={(e) => playRound(e)}
-            style={boardCell.hit ? hitColor : notHitColor}
             data-index={index}
             data-hit={boardCell.hit}
-            className={`cell ${boardCell.ship ? 'ship' : 'water'}`}
+            className={`cell ${boardCell.hit ? 'cell-hit' : null} ${
+              !boardCell.hit ? 'cell-water' : null
+            } 
+
+            ${boardCell.hit && !boardCell.ship ? 'cell-water' : null} 
+            
+            
+            ${boardCell.hit && boardCell.ship ? 'cell-ship' : null}   `}
           >
             {boardCell.ship ? 'ship' : 'water'}
           </div>

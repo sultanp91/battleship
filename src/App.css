@@ -1,3 +1,13 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
 .gameboard {
   width: 400px;
   height: 400px;
@@ -31,7 +41,10 @@
 }
 
 .cell-hit::before {
-  content: 'X';
+  content: '\274c';
   position: absolute;
+  font-size: 2.5rem;
   top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }

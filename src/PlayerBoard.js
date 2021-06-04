@@ -7,20 +7,17 @@ function PlayerBoard({
   playerPlacement,
   horizontal,
 }) {
-  const hitColor = { backgroundColor: 'red' };
-  const notHitColor = { backgroundColor: 'blue' };
   return (
     <div className='board-wrapper'>
       <div className='gameboard'>
         {player1.board.boardArray.map((boardCell, index) => (
           <div
             onClick={(e) => playerPlacement(e)}
-            style={boardCell.hit ? hitColor : notHitColor}
             data-index={index}
-            className={`cell ${boardCell.ship ? 'ship' : 'water'}`}
-          >
-            {boardCell.ship ? 'ship' : 'water'}
-          </div>
+            className={`cell ${boardCell.hit ? 'cell-hit' : null} ${
+              boardCell.ship ? 'cell-ship' : 'cell-water'
+            }`}
+          ></div>
         ))}
       </div>
     </div>

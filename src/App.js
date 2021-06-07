@@ -4,6 +4,8 @@ import playerFactory from './Factories/Player';
 import ComputerBoard from './ComputerBoard';
 import PlayerBoard from './PlayerBoard';
 import GameInfo from './GameInfo';
+import Header from './Header';
+import ShipPlacer from './ShipPlacer';
 
 function App() {
   const [player1, setPlayer1] = useState(playerFactory('Player 1'));
@@ -72,7 +74,7 @@ function App() {
   }, [player1, player2]);
 
   useEffect(() => {
-    if (index > 4) {
+    if (index > 4 && gameOver) {
       setShipsPlaced(true);
       setGameOver(false);
     }
@@ -80,17 +82,21 @@ function App() {
   useEffect;
   return (
     <div className='App'>
+      <Header />
       {!shipsPlaced && (
-        <button type='button' onClick={() => setHorizontal(!horizontal)}>
-          Toggle Horizontal
-        </button>
+        <ShipPlacer
+          setHorizontal={setHorizontal}
+          horizontal={horizontal}
+          index={index}
+          player1={player1}
+        />
       )}
-      <button onClick={resetGame}>Reset Game</button>
-      <h1>Battleship</h1>
+      <button className='reset-button' onClick={resetGame}>
+        New Game
+      </button>
+
       <h2>Winner: {winner}</h2>
-      <h2>
-        Player 1 {player1.board.shipsSunk() ? 'ships sunk' : 'still floating'}
-      </h2>
+
       <GameInfo gameOver={gameOver} shipsPlaced={shipsPlaced} />
       <div className='gameboard-container'>
         <PlayerBoard

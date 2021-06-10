@@ -1,9 +1,12 @@
 import React from 'react';
 
-function GameInfo({ gameOver, shipsPlaced }) {
+function GameInfo({ winner, gameOver, shipsPlaced }) {
   return (
     <div>
-      <h1>
+      <h2>
+        <h2>Winner: {winner}</h2>
+      </h2>
+      <h2>
         {gameOver && !shipsPlaced
           ? 'Place Your Ships!'
           : null || (!gameOver && shipsPlaced)
@@ -11,7 +14,7 @@ function GameInfo({ gameOver, shipsPlaced }) {
           : null || (gameOver && shipsPlaced)
           ? 'GAME OVER'
           : null}
-      </h1>
+      </h2>
     </div>
   );
 }

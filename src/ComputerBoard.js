@@ -23,9 +23,7 @@ function ComputerBoard({ player2, setPlayer2, playRound }) {
             
             
             ${boardCell.hit && boardCell.ship ? 'cell-ship' : null}   `}
-          >
-            {boardCell.ship ? 'ship' : 'water'}
-          </div>
+          ></div>
         ))}
       </div>
     </div>

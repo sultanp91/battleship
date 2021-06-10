@@ -2,9 +2,9 @@ import React from 'react';
 
 function ShipPlacer({ setHorizontal, horizontal, index, player1 }) {
   return (
-    <div>
+    <div className='ship-placer'>
       <h3>
-        Orientation: {horizontal ? 'Horizontal' : 'Vertical'}{' '}
+        Ship orientation: {horizontal ? 'Horizontal' : 'Vertical'}{' '}
         <button type='button' onClick={() => setHorizontal(!horizontal)}>
           Toggle
         </button>

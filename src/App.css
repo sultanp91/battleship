@@ -18,7 +18,8 @@ html {
 .reset-button {
   padding: 1rem 2rem;
   font-size: 2.5rem;
-  text-align: center;
+  display: block;
+  margin: 0 auto;
 }
 
 .gameboard {
@@ -33,6 +34,7 @@ html {
 .gameboard-container {
   display: flex;
   justify-content: center;
+  position: relative;
 }
 
 .board-wrapper {
@@ -61,4 +63,14 @@ html {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+.player-board {
+  position: relative;
+}
+
+.ship-placer {
+  position: absolute;
+  top: 5%;
+  left: -20rem;
+  z-index: 10;
 }

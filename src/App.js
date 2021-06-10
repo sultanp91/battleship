@@ -83,29 +83,21 @@ function App() {
   return (
     <div className='App'>
       <Header />
-      {!shipsPlaced && (
-        <ShipPlacer
-          setHorizontal={setHorizontal}
-          horizontal={horizontal}
-          index={index}
-          player1={player1}
-        />
-      )}
-      <button className='reset-button' onClick={resetGame}>
-        New Game
-      </button>
-
       <h2>Winner: {winner}</h2>
 
       <GameInfo gameOver={gameOver} shipsPlaced={shipsPlaced} />
       <div className='gameboard-container'>
-        <PlayerBoard
-          player1={player1}
-          setPlayer1={setPlayer1}
-          playerPlacement={playerPlacement}
-          shipsPlaced={shipsPlaced}
-          horizontal={horizontal}
-        />
+        <div className='player-board'>
+          <PlayerBoard
+            player1={player1}
+            setPlayer1={setPlayer1}
+            playerPlacement={playerPlacement}
+            shipsPlaced={shipsPlaced}
+            horizontal={horizontal}
+            setHorizontal={setHorizontal}
+            index={index}
+          />
+        </div>
         <ComputerBoard
           className='gameboard-container'
           player2={player2}
@@ -113,6 +105,9 @@ function App() {
           playRound={playRound}
         />
       </div>
+      <button className='reset-button' onClick={resetGame}>
+        New Game
+      </button>
     </div>
   );
 }

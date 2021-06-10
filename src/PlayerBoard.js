@@ -12,12 +12,14 @@ function PlayerBoard({
 }) {
   return (
     <div className='player-board'>
-      <ShipPlacer
-        setHorizontal={setHorizontal}
-        horizontal={horizontal}
-        index={index}
-        player1={player1}
-      />
+      {!shipsPlaced && (
+        <ShipPlacer
+          setHorizontal={setHorizontal}
+          horizontal={horizontal}
+          index={index}
+          player1={player1}
+        />
+      )}
       <div className='board-wrapper'>
         <div className='gameboard'>
           {player1.board.boardArray.map((boardCell, index) => (

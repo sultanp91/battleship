@@ -3,9 +3,7 @@ import React from 'react';
 function GameInfo({ winner, gameOver, shipsPlaced }) {
   return (
     <div>
-      <h2>
-        <h2>Winner: {winner}</h2>
-      </h2>
+      <h2>Winner: {winner}</h2>
       <h2>
         {gameOver && !shipsPlaced
           ? 'Place Your Ships!'

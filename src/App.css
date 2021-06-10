@@ -17,6 +17,7 @@ html {
 
 h2 {
   text-align: center;
+  font-size: 2.5rem;
 }
 
 .reset-button {
@@ -74,7 +75,7 @@ h2 {
 
 .ship-placer {
   position: absolute;
-  top: 5%;
+  top: 20rem;
   left: -20rem;
   z-index: 10;
 }

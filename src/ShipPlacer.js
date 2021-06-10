@@ -4,7 +4,7 @@ function ShipPlacer({ setHorizontal, horizontal, index, player1 }) {
   return (
     <div className='ship-placer'>
       <h3>
-        Ship orientation: {horizontal ? 'Horizontal' : 'Vertical'}{' '}
+        Orientation: {horizontal ? 'Horizontal' : 'Vertical'}{' '}
         <button type='button' onClick={() => setHorizontal(!horizontal)}>
           Toggle
         </button>

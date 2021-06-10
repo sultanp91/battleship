@@ -83,7 +83,6 @@ function App() {
   return (
     <div className='App'>
       <Header />
-
       <GameInfo winner={winner} gameOver={gameOver} shipsPlaced={shipsPlaced} />
       <div className='gameboard-container'>
         <div className='player-board'>

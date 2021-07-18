@@ -27,7 +27,22 @@ export default function playerFactory(name) {
     board.receiveAttack(idx);
   };
 
-  const AIMove = () => {};
+  const AiMove = () => {
+    const adjacentPositions = [-10, 1, 10, -1];
+    let adjacentIndex;
+    let AiIdx;
+    if (board.prevAttack.hit && board.prevAttack.AIMove) {
+      adjacentIndex = board.prevAttack.AIDirection;
+      AiIdx = board.prevAttack.idx + adjacentIndex;
+      if (board.boardArray[AiIdx].hit === false) {
+        return AiIdx;
+      } else {
+        board.prevAttack.AIMove = false;
+        return AiMove();
+      }
+    } else if (board.prevAttack && !board.prevAttack.AIMove) {
+    }
+  };
 
   function randIdxOrientation(shipLength) {
     const randomIdx = Math.floor(Math.random() * 100);

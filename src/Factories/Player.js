@@ -5,6 +5,14 @@ export default function playerFactory(name) {
 
   let board = gameboardFactory();
 
+  const playerMove = () => {
+    if (board.prevAttack.hit) {
+      AIMove();
+    } else {
+      randomMove();
+    }
+  };
+
   const randomMove = () => {
     function randomIndex() {
       let randomIdx = Math.floor(Math.random() * 100);
@@ -18,6 +26,8 @@ export default function playerFactory(name) {
     let idx = randomIndex();
     board.receiveAttack(idx);
   };
+
+  const AIMove = () => {};
 
   function randIdxOrientation(shipLength) {
     const randomIdx = Math.floor(Math.random() * 100);

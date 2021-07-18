@@ -19,6 +19,8 @@ export default function gameboardFactory() {
   let prevAttack = {
     hit: null,
     idx: null,
+    AIMove: false,
+    AIDirection: null,
   };
 
   const placeShip = function (length, idx, horizontal) {

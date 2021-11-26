@@ -6,7 +6,7 @@ function GameInfo({ winner, gameOver, shipsPlaced }) {
       <h2>{winner ? `Winner: ${winner}` : null}</h2>
       <h2>
         {gameOver && !shipsPlaced
-          ? "Place all of your ships"
+          ? "Place your ships"
           : null || (!gameOver && shipsPlaced)
           ? "Attack your opponent"
           : null || (gameOver && shipsPlaced)

@@ -20,7 +20,11 @@ h3 {
 .reset-button {
   padding: 1rem 2rem;
   font-size: 2.5rem;
+  border: none;
+  border-radius: 5px;
   display: block;
+  background-color: #00308f;
+  color: #fff;
   margin: 0 auto;
 }
 
@@ -36,7 +40,7 @@ h3 {
 @media screen and (max-width: 800px) {
   .gameboard-container {
     flex-direction: column;
-    gap: 2rem;
+    gap: 7rem;
   }
   .gameboard {
     width: 50vw;
@@ -80,7 +84,24 @@ h3 {
 
 .ship-placer {
   position: absolute;
-  top: 20rem;
-  left: -20rem;
+  bottom: -6rem;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 10;
+}
+
+.table {
+  font-size: 1.6rem;
+}
+
+table th {
+  font-weight: bold;
+}
+
+table button {
+  background-color: #00308f;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
 }

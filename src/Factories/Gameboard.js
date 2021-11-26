@@ -1,4 +1,5 @@
-import shipFactory from './ship';
+/* eslint-disable no-plusplus */
+import shipFactory from "./ship";
 
 export default function gameboardFactory() {
   const boardArray = [];
@@ -19,17 +20,15 @@ export default function gameboardFactory() {
   let prevAttack = {
     hit: null,
     idx: null,
-    AIMove: false,
-    AIDirection: null,
   };
 
   const placeShip = function (length, idx, horizontal) {
     let shipPlaced = false;
     if (horizontal) {
-      //checking to see if full length of ship will fit on board
+      // checking to see if full length of ship will fit on board
       const shipPlacement = idx % 10;
       if (length + shipPlacement <= 10) {
-        //checking to see if all positions on board are free for the ship
+        // checking to see if all positions on board are free for the ship
         let positionArray = [];
         for (let i = idx; i < length + idx; i++) {
           positionArray.push(boardArray[i]);

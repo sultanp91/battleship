@@ -1,12 +1,5 @@
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  font-family: 'Lato', sans-serif;
-}
-
-html {
-  font-size: 62.5%;
+body {
+  background-color: #e6e6fa;
 }
 
 .header {
@@ -33,6 +26,9 @@ h2 {
   display: grid;
   grid-template-columns: repeat(10, 1fr);
   grid-template-rows: repeat(10, 1fr);
+}
+
+.hover {
   cursor: pointer;
 }
 
@@ -55,19 +51,28 @@ h2 {
 }
 
 .cell-ship {
-  background-color: grey;
+  background-color: #a9a9a9;
 }
 .cell-water {
-  background-color: blue;
+  background-color: #007fff;
 }
 
-.cell-hit::before {
-  content: '\274c';
+/* .cell-hit::before {
+  content: "\274c";
   position: absolute;
+  color: black;
   font-size: 2.5rem;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+} */
+
+.cell-ship-hit {
+  background-color: #e32636;
+}
+
+.cell-water-hit {
+  background-color: #00308f;
 }
 .player-board {
   position: relative;

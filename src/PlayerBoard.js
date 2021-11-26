@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import ShipPlacer from './ShipPlacer';
+/* eslint-disable react/prop-types */
+import React, { useState } from "react";
+import ShipPlacer from "./ShipPlacer";
 
 function PlayerBoard({
   player1,
@@ -11,7 +12,7 @@ function PlayerBoard({
   index,
 }) {
   return (
-    <div className='player-board'>
+    <div className="player-board">
       {!shipsPlaced && (
         <ShipPlacer
           setHorizontal={setHorizontal}
@@ -20,15 +21,17 @@ function PlayerBoard({
           player1={player1}
         />
       )}
-      <div className='board-wrapper'>
-        <div className='gameboard'>
+      <div className="board-wrapper">
+        <div className="gameboard">
           {player1.board.boardArray.map((boardCell, index) => (
             <div
               onClick={(e) => playerPlacement(e)}
               data-index={index}
-              className={`cell ${boardCell.hit ? 'cell-hit' : null} ${
-                boardCell.ship ? 'cell-ship' : 'cell-water'
-              }`}
+              className={`cell ${
+                boardCell.hit && boardCell.ship ? "cell-ship-hit" : null
+              }
+              ${boardCell.hit && !boardCell.ship ? "cell-water-hit" : null}
+              ${boardCell.ship ? "cell-ship" : "cell-water"}`}
             ></div>
           ))}
         </div>

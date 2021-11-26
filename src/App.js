@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import './App.css';
-import playerFactory from './Factories/Player';
-import ComputerBoard from './ComputerBoard';
-import PlayerBoard from './PlayerBoard';
-import GameInfo from './GameInfo';
-import Header from './Header';
-import ShipPlacer from './ShipPlacer';
+/* eslint-disable jsx-quotes */
+import React, { useState, useEffect } from "react";
+import "./App.css";
+import playerFactory from "./Factories/Player";
+import ComputerBoard from "./ComputerBoard";
+import PlayerBoard from "./PlayerBoard";
+import GameInfo from "./GameInfo";
+import Header from "./Header";
 
 function App() {
-  const [player1, setPlayer1] = useState(playerFactory('Player 1'));
+  const [player1, setPlayer1] = useState(playerFactory("Player 1"));
 
-  const [player2, setPlayer2] = useState(playerFactory('Computer'));
+  const [player2, setPlayer2] = useState(playerFactory("Computer"));
 
   const [horizontal, setHorizontal] = useState(true);
 
@@ -39,8 +39,8 @@ function App() {
   };
 
   const resetGame = () => {
-    setPlayer1(playerFactory('Player 1'));
-    let playerCopy2 = playerFactory('Computer');
+    setPlayer1(playerFactory("Player 1"));
+    let playerCopy2 = playerFactory("Computer");
     playerCopy2.randomPlacement();
     setPlayer2(playerCopy2);
     setShipsPlaced(false);
@@ -50,13 +50,14 @@ function App() {
   };
 
   const playRound = (e) => {
-    if (!gameOver && e.target.dataset.hit === 'false') {
+    if (!gameOver && e.target.dataset.hit === "false") {
       let playerCopy2 = Object.assign({}, player2);
       let index = e.target.dataset.index;
       playerCopy2.board.receiveAttack(index);
+      setPlayer2(playerCopy2);
       let playerCopy1 = Object.assign({}, player1);
       playerCopy1.randomMove();
-      setPlayer2(playerCopy2);
+
       setPlayer1(playerCopy1);
     }
   };
@@ -69,7 +70,7 @@ function App() {
       setWinner(player1.playerName);
       setGameOver(true);
     } else if (!player2.board.shipsSunk() && !player1.board.shipsSunk()) {
-      setWinner('No Winner yet!');
+      setWinner("No Winner yet!");
     }
   }, [player1, player2]);
 
@@ -79,13 +80,12 @@ function App() {
       setGameOver(false);
     }
   }, [index]);
-  useEffect;
   return (
-    <div className='App'>
+    <div className="App">
       <Header />
       <GameInfo winner={winner} gameOver={gameOver} shipsPlaced={shipsPlaced} />
-      <div className='gameboard-container'>
-        <div className='player-board'>
+      <div className="gameboard-container">
+        <div className="player-board">
           <PlayerBoard
             player1={player1}
             setPlayer1={setPlayer1}
@@ -97,13 +97,13 @@ function App() {
           />
         </div>
         <ComputerBoard
-          className='gameboard-container'
+          className="gameboard-container"
           player2={player2}
           setPlayer2={setPlayer2}
           playRound={playRound}
         />
       </div>
-      <button className='reset-button' onClick={resetGame}>
+      <button type="button" className="reset-button" onClick={resetGame}>
         New Game
       </button>
     </div>

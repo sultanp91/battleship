@@ -12,6 +12,10 @@ h2 {
   text-align: center;
   font-size: 2.5rem;
 }
+h3 {
+  text-align: center;
+  font-size: 1.8rem;
+}
 
 .reset-button {
   padding: 1rem 2rem;
@@ -21,11 +25,23 @@ h2 {
 }
 
 .gameboard {
-  width: 400px;
-  height: 400px;
+  width: 30vw;
+  height: 30vw;
   display: grid;
   grid-template-columns: repeat(10, 1fr);
   grid-template-rows: repeat(10, 1fr);
+  margin: 2rem auto;
+}
+
+@media screen and (max-width: 800px) {
+  .gameboard-container {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .gameboard {
+    width: 50vw;
+    height: 50vw;
+  }
 }
 
 .hover {
@@ -36,18 +52,12 @@ h2 {
   display: flex;
   justify-content: center;
   position: relative;
-}
-
-.board-wrapper {
-  border-top: solid 1px black;
-  border-left: solid 1px black;
-  margin: 3rem;
+  gap: 5rem;
 }
 
 .cell {
   border-bottom: solid 1px black;
   border-right: solid 1px black;
-  position: relative;
 }
 
 .cell-ship {
@@ -56,16 +66,6 @@ h2 {
 .cell-water {
   background-color: #007fff;
 }
-
-/* .cell-hit::before {
-  content: "\274c";
-  position: absolute;
-  color: black;
-  font-size: 2.5rem;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-} */
 
 .cell-ship-hit {
   background-color: #e32636;

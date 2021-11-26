@@ -57,7 +57,6 @@ function App() {
       setPlayer2(playerCopy2);
       let playerCopy1 = Object.assign({}, player1);
       playerCopy1.randomMove();
-
       setPlayer1(playerCopy1);
     }
   };
@@ -70,7 +69,7 @@ function App() {
       setWinner(player1.playerName);
       setGameOver(true);
     } else if (!player2.board.shipsSunk() && !player1.board.shipsSunk()) {
-      setWinner("No Winner yet!");
+      setWinner(null);
     }
   }, [player1, player2]);
 
@@ -86,6 +85,7 @@ function App() {
       <GameInfo winner={winner} gameOver={gameOver} shipsPlaced={shipsPlaced} />
       <div className="gameboard-container">
         <div className="player-board">
+          <h3>Player Board</h3>
           <PlayerBoard
             player1={player1}
             setPlayer1={setPlayer1}
@@ -96,12 +96,15 @@ function App() {
             index={index}
           />
         </div>
-        <ComputerBoard
-          className="gameboard-container"
-          player2={player2}
-          setPlayer2={setPlayer2}
-          playRound={playRound}
-        />
+        <div className="computer-board">
+          <h3>Computer Board</h3>
+          <ComputerBoard
+            className="gameboard-container"
+            player2={player2}
+            setPlayer2={setPlayer2}
+            playRound={playRound}
+          />
+        </div>
       </div>
       <button type="button" className="reset-button" onClick={resetGame}>
         New Game

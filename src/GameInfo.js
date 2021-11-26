@@ -1,16 +1,16 @@
-import React from 'react';
+import React from "react";
 
 function GameInfo({ winner, gameOver, shipsPlaced }) {
   return (
     <div>
-      <h2>Winner: {winner}</h2>
+      <h2>{winner ? `Winner: ${winner}` : null}</h2>
       <h2>
         {gameOver && !shipsPlaced
-          ? 'Place Your Ships!'
+          ? "Place all of your ships"
           : null || (!gameOver && shipsPlaced)
-          ? 'Attack your opponent'
+          ? "Attack your opponent"
           : null || (gameOver && shipsPlaced)
-          ? 'GAME OVER'
+          ? "GAME OVER"
           : null}
       </h2>
     </div>

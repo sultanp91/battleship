@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/battleship/static/css/main.58e8e47a.chunk.css",
-    "main.js": "/battleship/static/js/main.12e6f6d9.chunk.js",
-    "main.js.map": "/battleship/static/js/main.12e6f6d9.chunk.js.map",
+    "main.css": "/battleship/static/css/main.38db84f6.chunk.css",
+    "main.js": "/battleship/static/js/main.4e2b9722.chunk.js",
+    "main.js.map": "/battleship/static/js/main.4e2b9722.chunk.js.map",
     "runtime-main.js": "/battleship/static/js/runtime-main.a886aa47.js",
     "runtime-main.js.map": "/battleship/static/js/runtime-main.a886aa47.js.map",
-    "static/js/2.ebe83634.chunk.js": "/battleship/static/js/2.ebe83634.chunk.js",
-    "static/js/2.ebe83634.chunk.js.map": "/battleship/static/js/2.ebe83634.chunk.js.map",
+    "static/js/2.98f5d788.chunk.js": "/battleship/static/js/2.98f5d788.chunk.js",
+    "static/js/2.98f5d788.chunk.js.map": "/battleship/static/js/2.98f5d788.chunk.js.map",
     "index.html": "/battleship/index.html",
-    "static/css/main.58e8e47a.chunk.css.map": "/battleship/static/css/main.58e8e47a.chunk.css.map",
-    "static/js/2.ebe83634.chunk.js.LICENSE.txt": "/battleship/static/js/2.ebe83634.chunk.js.LICENSE.txt"
+    "static/css/main.38db84f6.chunk.css.map": "/battleship/static/css/main.38db84f6.chunk.css.map",
+    "static/js/2.98f5d788.chunk.js.LICENSE.txt": "/battleship/static/js/2.98f5d788.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.a886aa47.js",
-    "static/js/2.ebe83634.chunk.js",
-    "static/css/main.58e8e47a.chunk.css",
-    "static/js/main.12e6f6d9.chunk.js"
+    "static/js/2.98f5d788.chunk.js",
+    "static/css/main.38db84f6.chunk.css",
+    "static/js/main.4e2b9722.chunk.js"
   ]
 }

@@ -23,9 +23,10 @@ h3 {
   border: none;
   border-radius: 5px;
   display: block;
-  background-color: #00308f;
+  background-color: #03c03c;
   color: #fff;
   margin: 0 auto;
+  cursor: pointer;
 }
 
 .gameboard {
@@ -99,9 +100,10 @@ table th {
 }
 
 table button {
-  background-color: #00308f;
+  background-color: #03c03c;
   color: #fff;
   padding: 0.5rem 1rem;
   border: none;
   border-radius: 5px;
+  cursor: pointer;
 }
